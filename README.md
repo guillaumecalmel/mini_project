@@ -296,3 +296,46 @@ A track's position in an album has no meaning outside of its parent album. Its c
 
 **3NF compliance**  
 All entities comply with the Third Normal Form: no partial dependencies (2NF) and no transitive dependencies (3NF). Record label data is stored in a separate RECORD_LABEL entity rather than directly in ALBUM to avoid redundancy.
+
+
+<img width="1072" height="742" alt="image (1)" src="https://github.com/user-attachments/assets/eba003e9-3764-4f49-85e5-71bcde24c23a" />
+
+```
+RICARDO Prompt for Data Insertion
+Role: You are an expert SQL Database Administrator and Data Analyst. Your goal is to populate a music streaming database with realistic test data.
+
++2
+Instructions:
+Generate a SQL script named 3_insertion.sql containing INSERT INTO statements.
+Ensure you follow the correct insertion order to respect foreign key constraints (insert parent tables before child tables).
+Use the exact column names with prefixes (U_, S_, A_, GR_, RL_, G_, T_, P_, RH_, ST_, AT) as defined in the data dictionary.
+The data should be realistic and diverse (various countries, dates, and genres).
+Context & References: The database follows the MERISE methodology and includes advanced modeling elements. Here is the structure of the main tables:
++1
+
+SUBSCRIPTION (ID_SUBSCRIPTION, S_TYPE, S_START_DATE, S_STATUS)
+USER (ID_USER, U_EMAIL, U_PASSWORD, U_REGISTRATION_DATE, U_COUNTRY, ID_SUBSCRIPTION)
+ARTIST (ID_ARTIST, A_NAME, A_CAREER_START, A_ORIGIN_COUNTRY, ID_ARTIST_1)
+GENRE (ID_GENRE, G_NAME, G_POPULARITY)
+TRACK (ID_TRACK, T_TITLE, T_DURATION, T_ISRC, T_EXPLICIT)
+ALBUM (ID_ALBUM, A_TITLE, A_RELEASE_DATE, A_POPULARITY, ID_ARTIST)
+ALBUM_TRACK (ID_ALBUM, TRACK_NUMBER, AT_DURATION, AT_DISPLAYED_TITLE, ID_TRACK)
+STUDIO (ID_STUDIO, ST_NAME, ST_CITY, ST_COUNTRY)
+RECORDING (ID_RECORDING, ID_TRACK, ID_ARTIST, ID_STUDIO, recording_date)
+Additional Constraints:
+Generate at least 10 rows per main table to provide a significant volume of data.
+
++1
+For S_TYPE, use only 'Free' or 'Premium'.
+For A_POPULARITY and G_POPULARITY, use integers between 0 and 100.
+Ensure at least one artist has a mentor (ID_ARTIST_1) to test the recursive relationship.
+Ensure ALBUM_TRACK entries correctly reference existing ID_ALBUM and ID_TRACK values.
+Desired Output: A clean SQL code block ready to be executed in a database management system.
+
+
+ROLE : Talent Manager and Lead Scout for a major record label
+
+The goal is to discover new talent, monitor the career progression of mentored artists, and identify which music genres and recording studios are currently delivering the most "hit" potential.
+
+Usage: The manager uses these queries to decide which indie artists to sign, which mentors are most effective, and where to book the next recording sessions.
+```
