@@ -212,40 +212,40 @@ The MCD must include: a recursive relationship, an n-ary relationship
 | Entity | Attribute | Type | Constraint | Description |
 |--------|-----------|------|------------|-------------|
 | GENRE | id_genre | INT | PK, NOT NULL | Unique identifier |
-| GENRE | name | VARCHAR(100) | UNIQUE, NOT NULL | Genre name |
-| GENRE | description | VARCHAR(255) | NULL | Description |
-| GENRE | origin | VARCHAR(100) | NULL | Geographic origin |
-| GENRE | popularity | INT | NOT NULL | Popularity score |
+| GENRE | g_name | VARCHAR(100) | UNIQUE, NOT NULL | Genre name |
+| GENRE | g_description | VARCHAR(255) | NULL | Description |
+| GENRE | g_origin | VARCHAR(100) | NULL | Geographic origin |
+| GENRE | g_popularity | INT | NOT NULL | Popularity score |
 
 #### RECORD_LABEL
 
 | Entity | Attribute | Type | Constraint | Description |
 |--------|-----------|------|------------|-------------|
 | RECORD_LABEL | id_label | INT | PK, NOT NULL | Unique identifier |
-| RECORD_LABEL | name | VARCHAR(255) | NOT NULL | Label name |
-| RECORD_LABEL | country | VARCHAR(100) | NOT NULL | Country |
-| RECORD_LABEL | creation_date | DATE | NULL | Creation date |
-| RECORD_LABEL | website | VARCHAR(255) | NULL | Website URL |
+| RECORD_LABEL | rl_name | VARCHAR(255) | NOT NULL | Label name |
+| RECORD_LABEL | rl_country | VARCHAR(100) | NOT NULL | Country |
+| RECORD_LABEL | rl_creation_date | DATE | NULL | Creation date |
+| RECORD_LABEL | rl_website | VARCHAR(255) | NULL | Website URL |
 
 #### RIGHTS_HOLDER
 
 | Entity | Attribute | Type | Constraint | Description |
 |--------|-----------|------|------------|-------------|
 | RIGHTS_HOLDER | id_holder | INT | PK, NOT NULL | Unique identifier |
-| RIGHTS_HOLDER | name | VARCHAR(255) | NOT NULL | Name |
-| RIGHTS_HOLDER | type | VARCHAR(50) | NOT NULL | Artist / Label |
-| RIGHTS_HOLDER | contact | VARCHAR(255) | NULL | Contact info |
-| RIGHTS_HOLDER | country | VARCHAR(100) | NOT NULL | Country |
+| RIGHTS_HOLDER | rh_name | VARCHAR(255) | NOT NULL | Name |
+| RIGHTS_HOLDER | rh_type | VARCHAR(50) | NOT NULL | Artist / Label |
+| RIGHTS_HOLDER | rh_contact | VARCHAR(255) | NULL | Contact info |
+| RIGHTS_HOLDER | rh_country | VARCHAR(100) | NOT NULL | Country |
 
 #### STUDIO
 
 | Entity | Attribute | Type | Constraint | Description |
 |--------|-----------|------|------------|-------------|
 | STUDIO | id_studio | INT | PK, NOT NULL | Unique identifier |
-| STUDIO | name | VARCHAR(255) | NOT NULL | Studio name |
-| STUDIO | city | VARCHAR(100) | NOT NULL | City |
-| STUDIO | country | VARCHAR(100) | NOT NULL | Country |
-| STUDIO | capacity | INT | NULL | Capacity |
+| STUDIO | st_name | VARCHAR(255) | NOT NULL | Studio name |
+| STUDIO | st_city | VARCHAR(100) | NOT NULL | City |
+| STUDIO | st_country | VARCHAR(100) | NOT NULL | Country |
+| STUDIO | st_capacity | INT | NULL | Capacity |
 
 #### RECORDING *(n-ary relationship)*
 
@@ -279,7 +279,7 @@ The MCD must include: a recursive relationship, an n-ary relationship
 
 ![MCD](./mcd.png)
 
-> *The MCD source file is available in this repository.*
+
 
 ---
 
@@ -300,18 +300,18 @@ All entities comply with the Third Normal Form: no partial dependencies (2NF) an
 
 <img width="1072" height="742" alt="image (1)" src="https://github.com/user-attachments/assets/eba003e9-3764-4f49-85e5-71bcde24c23a" />
 
-```
-RICARDO Prompt for Data Insertion
+
+ Prompt for Data Insertion
 Role: You are an expert SQL Database Administrator and Data Analyst. Your goal is to populate a music streaming database with realistic test data.
 
-+2
+
 Instructions:
 Generate a SQL script named 3_insertion.sql containing INSERT INTO statements.
 Ensure you follow the correct insertion order to respect foreign key constraints (insert parent tables before child tables).
 Use the exact column names with prefixes (U_, S_, A_, GR_, RL_, G_, T_, P_, RH_, ST_, AT) as defined in the data dictionary.
 The data should be realistic and diverse (various countries, dates, and genres).
 Context & References: The database follows the MERISE methodology and includes advanced modeling elements. Here is the structure of the main tables:
-+1
+
 
 SUBSCRIPTION (ID_SUBSCRIPTION, S_TYPE, S_START_DATE, S_STATUS)
 USER (ID_USER, U_EMAIL, U_PASSWORD, U_REGISTRATION_DATE, U_COUNTRY, ID_SUBSCRIPTION)
@@ -325,7 +325,7 @@ RECORDING (ID_RECORDING, ID_TRACK, ID_ARTIST, ID_STUDIO, recording_date)
 Additional Constraints:
 Generate at least 10 rows per main table to provide a significant volume of data.
 
-+1
+
 For S_TYPE, use only 'Free' or 'Premium'.
 For A_POPULARITY and G_POPULARITY, use integers between 0 and 100.
 Ensure at least one artist has a mentor (ID_ARTIST_1) to test the recursive relationship.
@@ -338,4 +338,4 @@ ROLE : Talent Manager and Lead Scout for a major record label
 The goal is to discover new talent, monitor the career progression of mentored artists, and identify which music genres and recording studios are currently delivering the most "hit" potential.
 
 Usage: The manager uses these queries to decide which indie artists to sign, which mentors are most effective, and where to book the next recording sessions.
-```
+
