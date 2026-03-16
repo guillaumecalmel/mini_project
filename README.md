@@ -5,22 +5,6 @@
 > **Part:** 1 – Requirements Analysis & MCD  
 > **Deadline:** February 27, 2026  
 
----
-
-## Table of Contents
-
-1. [Project Overview](#1-project-overview)
-2. [Requirements Analysis](#2-requirements-analysis)
-   - [Priming Prompt](#21-priming-prompt)
-   - [RICARDO Prompt](#22-ricardo-prompt)
-   - [Business Rules](#23-business-rules-obtained)
-   - [Data Dictionary](#24-data-dictionary-obtained)
-3. [Conceptual Data Model (MCD)](#3-conceptual-data-model-mcd)
-   - [MCD Diagram](#31-mcd-diagram)
-   - [Modeling Choices](#32-modeling-choices)
-
----
-
 ## 1. Project Overview
 
 This project follows the **MERISE methodology** to design and develop a relational database for a music streaming platform similar to **Deezer**. The platform allows registered users to listen to tracks, browse albums, create playlists, and manage their music library.
@@ -275,12 +259,6 @@ The MCD must include: a recursive relationship, an n-ary relationship
 
 ## 3. Conceptual Data Model (MCD)
 
-### 3.1 MCD Diagram
-
-![MCD](./mcd.png)
-
-
-
 ---
 
 ### 3.2 Modeling Choices
@@ -297,8 +275,11 @@ A track's position in an album has no meaning outside of its parent album. Its c
 **3NF compliance**  
 All entities comply with the Third Normal Form: no partial dependencies (2NF) and no transitive dependencies (3NF). Record label data is stored in a separate RECORD_LABEL entity rather than directly in ALBUM to avoid redundancy.
 
+## PART 3. LDM and PDM
 
 <img width="1072" height="742" alt="image (1)" src="https://github.com/user-attachments/assets/eba003e9-3764-4f49-85e5-71bcde24c23a" />
+
+## PART 4 Inserting data 
 
 
  Prompt for Data Insertion
@@ -332,6 +313,7 @@ Ensure at least one artist has a mentor (ID_ARTIST_1) to test the recursive rela
 Ensure ALBUM_TRACK entries correctly reference existing ID_ALBUM and ID_TRACK values.
 Desired Output: A clean SQL code block ready to be executed in a database management system.
 
+## PART 5 querying the database
 
 ROLE : Talent Manager and Lead Scout for a major record label
 
