@@ -142,29 +142,29 @@ The MCD must include: a recursive relationship, an n-ary relationship
 | Entity | Attribute | Type | Constraint | Description |
 |--------|-----------|------|------------|-------------|
 | USER | id_user | INT | PK, NOT NULL | Unique identifier |
-| USER | email | VARCHAR(255) | UNIQUE, NOT NULL | Email address |
-| USER | password | VARCHAR(255) | NOT NULL | Hashed password |
-| USER | registration_date | DATE | NOT NULL | Registration date |
-| USER | country | VARCHAR(100) | NOT NULL | Country of residence |
+| USER | u_email | VARCHAR(255) | UNIQUE, NOT NULL | Email address |
+| USER | u_password | VARCHAR(255) | NOT NULL | Hashed password |
+| USER | u_registration_date | DATE | NOT NULL | Registration date |
+| USER | u_country | VARCHAR(100) | NOT NULL | Country of residence |
 
 #### SUBSCRIPTION
 
 | Entity | Attribute | Type | Constraint | Description |
 |--------|-----------|------|------------|-------------|
 | SUBSCRIPTION | id_subscription | INT | PK, NOT NULL | Unique identifier |
-| SUBSCRIPTION | type | VARCHAR(20) | NOT NULL | Free / Premium |
-| SUBSCRIPTION | start_date | DATE | NOT NULL | Start date |
-| SUBSCRIPTION | end_date | DATE | NULL | End date |
-| SUBSCRIPTION | status | VARCHAR(20) | NOT NULL | Active / Expired |
+| SUBSCRIPTION | s_type | VARCHAR(20) | NOT NULL | Free / Premium |
+| SUBSCRIPTION | s_start_date | DATE | NOT NULL | Start date |
+| SUBSCRIPTION | s_end_date | DATE | NULL | End date |
+| SUBSCRIPTION | s_status | VARCHAR(20) | NOT NULL | Active / Expired |
 
 #### ARTIST
 
 | Entity | Attribute | Type | Constraint | Description |
 |--------|-----------|------|------------|-------------|
 | ARTIST | id_artist | INT | PK, NOT NULL | Unique identifier |
-| ARTIST | name | VARCHAR(255) | NOT NULL | Artist name |
-| ARTIST | career_start | DATE | NULL | Career start date |
-| ARTIST | origin_country | VARCHAR(100) | NOT NULL | Country of origin |
+| ARTIST | a_name | VARCHAR(255) | NOT NULL | Artist name |
+| ARTIST | a_career_start | DATE | NULL | Career start date |
+| ARTIST | a_origin_country | VARCHAR(100) | NOT NULL | Country of origin |
 | ARTIST | id_mentor | INT | FK (ARTIST) | Mentor artist (recursive) |
 
 #### GROUP
@@ -172,39 +172,39 @@ The MCD must include: a recursive relationship, an n-ary relationship
 | Entity | Attribute | Type | Constraint | Description |
 |--------|-----------|------|------------|-------------|
 | GROUP | id_group | INT | PK, NOT NULL | Unique identifier |
-| GROUP | name | VARCHAR(255) | NOT NULL | Group name |
-| GROUP | creation_date | DATE | NOT NULL | Creation date |
-| GROUP | country | VARCHAR(100) | NOT NULL | Country |
-| GROUP | status | VARCHAR(50) | NOT NULL | Active / Disbanded |
+| GROUP | gr_name | VARCHAR(255) | NOT NULL | Group name |
+| GROUP | gr_creation_date | DATE | NOT NULL | Creation date |
+| GROUP | gr_country | VARCHAR(100) | NOT NULL | Country |
+| GROUP | gr_status | VARCHAR(50) | NOT NULL | Active / Disbanded |
 
 #### ALBUM
 
 | Entity | Attribute | Type | Constraint | Description |
 |--------|-----------|------|------------|-------------|
 | ALBUM | id_album | INT | PK, NOT NULL | Unique identifier |
-| ALBUM | title | VARCHAR(255) | NOT NULL | Album title |
-| ALBUM | release_date | DATE | NOT NULL | Release date |
+| ALBUM | a_title | VARCHAR(255) | NOT NULL | Album title |
+| ALBUM | a_release_date | DATE | NOT NULL | Release date |
 | ALBUM | id_label | INT | FK | Record label |
-| ALBUM | popularity | INT | NOT NULL | Popularity score |
+| ALBUM | a_popularity | INT | NOT NULL | Popularity score |
 
 #### TRACK
 
 | Entity | Attribute | Type | Constraint | Description |
 |--------|-----------|------|------------|-------------|
 | TRACK | id_track | INT | PK, NOT NULL | Unique identifier |
-| TRACK | title | VARCHAR(255) | NOT NULL | Track title |
-| TRACK | duration | INT | NOT NULL | Duration in seconds |
-| TRACK | isrc | VARCHAR(15) | UNIQUE, NOT NULL | ISRC code |
-| TRACK | explicit | BOOLEAN | NOT NULL | Explicit content flag |
+| TRACK | t_title | VARCHAR(255) | NOT NULL | Track title |
+| TRACK | t_duration | INT | NOT NULL | Duration in seconds |
+| TRACK | t_isrc | VARCHAR(15) | UNIQUE, NOT NULL | ISRC code |
+| TRACK | t_explicit | BOOLEAN | NOT NULL | Explicit content flag |
 
 #### PLAYLIST
 
 | Entity | Attribute | Type | Constraint | Description |
 |--------|-----------|------|------------|-------------|
 | PLAYLIST | id_playlist | INT | PK, NOT NULL | Unique identifier |
-| PLAYLIST | name | VARCHAR(255) | NOT NULL | Playlist name |
-| PLAYLIST | creation_date | DATE | NOT NULL | Creation date |
-| PLAYLIST | public | BOOLEAN | NOT NULL | Public visibility |
+| PLAYLIST | p_name | VARCHAR(255) | NOT NULL | Playlist name |
+| PLAYLIST | p_creation_date | DATE | NOT NULL | Creation date |
+| PLAYLIST | p_public | BOOLEAN | NOT NULL | Public visibility |
 | PLAYLIST | id_user | INT | FK | Creator (User) |
 
 #### GENRE
@@ -264,8 +264,8 @@ The MCD must include: a recursive relationship, an n-ary relationship
 | ALBUM_TRACK | id_album | INT | PK, FK | Album (strong entity) |
 | ALBUM_TRACK | track_number | INT | PK | Track number in album |
 | ALBUM_TRACK | id_track | INT | FK | Track |
-| ALBUM_TRACK | duration | INT | NOT NULL | Duration in seconds |
-| ALBUM_TRACK | displayed_title | VARCHAR(255) | NOT NULL | Displayed track title |
+| ALBUM_TRACK | at_duration | INT | NOT NULL | Duration in seconds |
+| ALBUM_TRACK | at_displayed_title | VARCHAR(255) | NOT NULL | Displayed track title |
 
 > ✔ **Recursive relationship:** `id_mentor` in ARTIST  
 > ✔ **N-ary relationship (n=3):** RECORDING (ARTIST + TRACK + STUDIO + date)  
